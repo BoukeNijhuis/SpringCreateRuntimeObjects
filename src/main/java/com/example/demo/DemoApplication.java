@@ -27,18 +27,15 @@ public class DemoApplication {
 //            stream.forEach(i -> result.append(newWay(newClassFactory, i).getOutput()));
             stream.forEach(i -> result.append(springWay(context, i).getOutput()));
 
-
             System.out.println(result.toString());
 
         };
     }
 
     // https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-method-injection
-    // ApplicationContext verkrijgen via setter injection?
     private Clazz springWay(ApplicationContext context, int i) {
-        return context.getBean(OldClass.class, i);
+        return context.getBean(SpringClass.class, i);
     }
-
 
     private Clazz newWay(NewClass.Factory newClassFactory, int i) {
         return newClassFactory.createClass(i);
